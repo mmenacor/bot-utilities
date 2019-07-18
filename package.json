@@ -1,0 +1,27 @@
+{
+    "name": "confusionmatrix",
+    "version": "1.0.0",
+    "description": "Pruebas Batch MCLS",
+    "main": "index.js",
+    "scripts": {
+        "compile": "tsc",
+        "test": "jest --forceExit --coverage --verbose --detectOpenHandles"
+    },
+    "keywords": [
+        "luis",
+        "test"
+    ],
+    "author": "Miguel Mena",
+    "license": "ISC",
+    "devDependencies": {
+        "jest": "^24.8.0",
+        "ts-jest": "^24.0.2",
+        "typescript": "^3.5.3"
+    },
+    "dependencies": {
+        "@types/jest": "^24.0.15",
+        "@types/node": "^12.6.2",
+        "request": "^2.88.0",
+        "request-promise-native": "^1.0.7"
+    }
+}
