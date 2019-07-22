@@ -1,5 +1,5 @@
 module.exports.luisresults = [
-
+    //Mocky URL: http://www.mocky.io/v2/5d30dbe13200000cb1204780
     {
         "query": "Saldo por Pagar",
         "topScoringIntent": {
@@ -20,41 +20,52 @@ module.exports.luisresults = [
         }]
     },
     {
-        "query": "Saldo",
+        "query": "Adelantar saldo",
         "topScoringIntent": {
-            "intent": "CONSULTA_SALDO",
-            "score": 0.9999941
+            "intent": "MCL01_AdelantarSaldoPRE",
+            "score": 0.8503937
         },
         "entities": [{
-            "entity": "saldo",
-            "type": "Saldo",
-            "startIndex": 0,
-            "endIndex": 4,
-            "resolution": {
-                "values": [
-                    "Saldo"
-                ]
+                "entity": "adelantar saldo",
+                "type": "Adelantar",
+                "startIndex": 0,
+                "endIndex": 14,
+                "resolution": {
+                    "values": [
+                        "adelantar"
+                    ]
+                },
+                "role": ""
             },
-            "role": ""
-        }]
+            {
+                "entity": "saldo",
+                "type": "Saldo",
+                "startIndex": 10,
+                "endIndex": 14,
+                "resolution": {
+                    "values": [
+                        "Saldo"
+                    ]
+                }
+            }
+        ]
     }
-
 ]
 
 exports.utteranceValidation = [{
-        text: "Consulta",
-        intent: "CONSULTA_GENERAL"
+        text: "Saldo por Pagar",
+        intent: "CONSULTA_SALDO"
     },
     {
-        text: "Otra consulta",
-        intent: "CONSULTA_GENERAL"
+        text: "Adelantar saldo",
+        intent: "MCL01_AdelantarSaldoPRE"
     }
 
 ]
 
 exports.confidenceResult = [{
 
-        texto: "Consulta",
+        texto: "Saldo por Pagar",
         clase: "CONSULTA_GENERAL",
         guess: "CONSULTA_GENERAL",
         correct: true,

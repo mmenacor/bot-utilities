@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1563379426767" clover="3.2.0">
-  <project timestamp="1563379426768" name="All files">
-    <metrics statements="22" coveredstatements="22" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6" elements="28" coveredelements="28" complexity="0" loc="22" ncloc="22" packages="5" files="5" classes="5"/>
+<coverage generated="1563482699063" clover="3.2.0">
+  <project timestamp="1563482699063" name="All files">
+    <metrics statements="25" coveredstatements="25" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="6" elements="33" coveredelements="33" complexity="0" loc="25" ncloc="25" packages="5" files="5" classes="5"/>
     <package name="src">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="index.ts" path="C:\Users\mmenacor\OneDrive - everis\Documentos\ConfusionMatrix\src\index.ts">
@@ -12,9 +12,9 @@
       </file>
     </package>
     <package name="src.core">
-      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
       <file name="confidencebuilder.ts" path="C:\Users\mmenacor\OneDrive - everis\Documentos\ConfusionMatrix\src\core\confidencebuilder.ts">
-        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
         <line num="3" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="10" count="2" type="stmt"/>
@@ -22,8 +22,7 @@
         <line num="19" count="2" type="stmt"/>
         <line num="21" count="4" type="stmt"/>
         <line num="23" count="4" type="stmt"/>
-        <line num="28" count="2" type="stmt"/>
-        <line num="29" count="2" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.util">
@@ -40,18 +39,22 @@
       <file name="datatest.js" path="C:\Users\mmenacor\OneDrive - everis\Documentos\ConfusionMatrix\test\datatest.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
-        <line num="44" count="2" type="stmt"/>
         <line num="55" count="2" type="stmt"/>
+        <line num="66" count="2" type="stmt"/>
       </file>
     </package>
     <package name="test.clients">
-      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
       <file name="luisclient.mock.ts" path="C:\Users\mmenacor\OneDrive - everis\Documentos\ConfusionMatrix\test\clients\luisclient.mock.ts">
-        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="4" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
-        <line num="10" count="4" type="stmt"/>
         <line num="11" count="4" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="15" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="19" count="4" type="stmt"/>
+        <line num="24" count="4" type="stmt"/>
       </file>
     </package>
   </project>
