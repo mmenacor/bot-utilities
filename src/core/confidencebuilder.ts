@@ -21,7 +21,7 @@ export class ConfidenceBuilder {
             let luisResult = this.luisclient.getIntent(utterance.text);
             
             return this.transformer.transform(luisResult, utterance);
-                                    
+            //comentario de prueba actualización github
         })
 
         return result;
