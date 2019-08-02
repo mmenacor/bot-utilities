@@ -19,6 +19,7 @@ export class LuisClient implements ILuisclient{
       
             this.agente = request.defaults({
             baseUrl: this.config.baseUrl,
+            strictSSL: false,
             agent: new https.Agent({ keepAlive: true })
           
           })
@@ -27,10 +28,13 @@ export class LuisClient implements ILuisclient{
 
     public async getIntent (utterance: string): Promise<ILuisresult>{
         
-        return await this.agente.get({
-            uri: '/myUri'
-
+        let result = await this.agente.get({
+            
+            uri: `${this.config.modelId}?subscription-key=${this.config.subscription}&q=${utterance}`
+            
         })
+
+        return JSON.parse(result);
         
     }
 

@@ -10,7 +10,7 @@ import { LuisClientMock } from '../clients/luisclient.mock';
 
 var datatests = require('../datatest.js');
 
-test("Longitud de utterances igual a longitud de confidence", ()=>{
+test("Longitud de utterances igual a longitud de confidence", async ()=>{
 
     //Arrange
     let luisclient : ILuisclient = new LuisClientMock;
@@ -21,16 +21,15 @@ test("Longitud de utterances igual a longitud de confidence", ()=>{
     
     //Act
     
-    let builder = confidencebuilder.build(validation);
-    
-  
+    let builder = await confidencebuilder.build(validation);
+      
     
     //Assert
     expect(validation.length).toEqual(builder.length);
    
 })
 
-test ("Textos de confidence coinciden con los datos ingresados", ()=>{
+    test ("Textos de confidence coinciden con los datos ingresados", async ()=>{
         
             //Arrange
     let luisclient : ILuisclient = new LuisClientMock;
@@ -41,16 +40,13 @@ test ("Textos de confidence coinciden con los datos ingresados", ()=>{
     
     //Act
     
-    let builder = confidencebuilder.build(validation);
-    
+    let builder = await confidencebuilder.build(validation);
+   
     //Assert
     expect(validation[0].text).toEqual(builder[0].texto);
     expect(validation[1].text).toEqual(builder[1].texto);
-    
-    
-        
-    
-}
+               
+    }
 
 
 

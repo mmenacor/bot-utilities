@@ -4,28 +4,28 @@ import { Transformer } from "../util/transformer";
 import { ILuisclient } from "../clients/luisclient";
 
 export class ConfidenceBuilder {
-
+    
     private transformer: Transformer;
-
+    
     constructor(private luisclient:ILuisclient ){
-
+        
     this.transformer= new Transformer();
-
-    }
-    public build (utterances:IUtterance[]): IConfidence[] {   
-        
-        let result : IConfidence[];
-        
-        result = utterances.map((utterance, index, utterances) =>{
-            
-            let luisResult = this.luisclient.getIntent(utterance.text);
-            
-            return this.transformer.transform(luisResult, utterance);
-            //comentario de prueba actualización github
-        })
-
-        return result;
-
-    }
-
+    
 }
+public async build (utterances:IUtterance[]): Promise<IConfidence[]> {   
+    
+       
+       let result =  await Promise.all(utterances.map( async (utterance, index, utterances) =>{
+            
+                let luisResult = await this.luisclient.getIntent(utterance.text);
+                console.log("UTTERANCES");
+                console.log(utterances);
+                return this.transformer.transform(luisResult, utterance);
+                
+            }))
+           
+         return result;
+            
+        }
+        
+    }

@@ -1,0 +1,3 @@
+texto;clase;guess;correct;confidence
+Saldo por Pagar;CONSULTA_SALDO;CONSULTA_SALDO;true;0.9999991
+Saldo por Pagar;MCL01_AdelantarSaldoPRE;CONSULTA_SALDO;false;0.9999991
