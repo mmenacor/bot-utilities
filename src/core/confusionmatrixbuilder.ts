@@ -14,8 +14,7 @@ public async build (utterances:IUtterance[],filename:string): Promise<any> {
     const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
     let confidences = await this.confidencebuilder.build(utterances);
-    console.log("CONFIDENCES matrix");
-    console.log(confidences);
+    
     console.log("Comienza la creación del csv");
         
     const csvWriter = createCsvWriter({

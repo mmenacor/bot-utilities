@@ -16,8 +16,6 @@ class CreateConfusionMatrix {
         return __awaiter(this, void 0, void 0, function* () {
             const createCsvWriter = require('csv-writer').createObjectCsvWriter;
             let confidences = yield this.confidencebuilder.build(utterances);
-            console.log("CONFIDENCES matrix");
-            console.log(confidences);
             console.log("Comienza la creación del csv");
             const csvWriter = createCsvWriter({
                 path: filename,

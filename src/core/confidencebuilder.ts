@@ -18,8 +18,7 @@ public async build (utterances:IUtterance[]): Promise<IConfidence[]> {
        let result =  await Promise.all(utterances.map( async (utterance, index, utterances) =>{
             
                 let luisResult = await this.luisclient.getIntent(utterance.text);
-                console.log("UTTERANCES");
-                console.log(utterances);
+               
                 return this.transformer.transform(luisResult, utterance);
                 
             }))

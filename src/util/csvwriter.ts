@@ -5,7 +5,7 @@ export class CrearCsv {
 
 
     async createCsv(data:IConfidence[])  {
-
+        
         console.log("Comienza la creación del csv");
         const createCsvWriter = require('csv-writer').createObjectCsvWriter;
         const csvWriter = createCsvWriter({
@@ -31,10 +31,8 @@ export class CrearCsv {
 
         // }
        await csvWriter.writeRecords(data)
-            .then( ()  => console.log('The CSV file was written successfully'))
+            .then(()  => console.log('The CSV file was written successfully'))
             .catch(() => console.error('ERROR' ) );
-            
-
     }
 
 }

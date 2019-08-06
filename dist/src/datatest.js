@@ -53,13 +53,47 @@ module.exports.luisresults = [
 ]
 
 exports.utteranceValidation = [{
-        text: "Saldo por Pagar",
-        intent: "CONSULTA_SALDO"
+
+        "text": "Saldo por Pagar",
+        "intent": "CONSULTA_SALDO"
     },
     {
-        text: "Adelantar saldo",
-        intent: "MCL01_AdelantarSaldoPRE"
+        "text": "Saldo",
+        "intent": "CONSULTA_SALDO"
+    },
+    {
+        "text": "Fecha de corte",
+        "intent": "CONSULTA_SALDO"
+    },
+    {
+        "text": "Consulta de saldo",
+        "intent": "CONSULTA_SALDO"
+    },
+    {
+        "text": "Consulta saldo movil",
+        "intent": "CONSULTA_SALDO"
+    },
+    {
+        "text": "Fecha de corte",
+        "intent": "MCL01_AdelantarSaldoPRE"
+    },
+    {
+        "text": "Adelantar saldo",
+        "intent": "MCL01_AdelantarSaldoPRE"
+    },
+    {
+        "text": "Adelanto de saldo",
+        "intent": "MCL01_AdelantarSaldoPRE"
+    },
+    {
+        "text": "Corte",
+        "intent": "MCL01_AdelantarSaldoPRE"
+    },
+    {
+        "text": "adelantar saldo",
+        "intent": "MCL01_AdelantarSaldoPRE"
     }
+
 
 ]
 

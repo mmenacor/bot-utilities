@@ -18,8 +18,6 @@ class ConfidenceBuilder {
         return __awaiter(this, void 0, void 0, function* () {
             let result = yield Promise.all(utterances.map((utterance, index, utterances) => __awaiter(this, void 0, void 0, function* () {
                 let luisResult = yield this.luisclient.getIntent(utterance.text);
-                console.log("UTTERANCES");
-                console.log(utterances);
                 return this.transformer.transform(luisResult, utterance);
             })));
             return result;
