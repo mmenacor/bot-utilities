@@ -14,17 +14,17 @@ export class ConfidenceBuilder {
 }
 public async build (utterances:IUtterance[]): Promise<IConfidence[]> {   
     
-       
+       try{
        let result =  await Promise.all(utterances.map( async (utterance, index, utterances) =>{
             
                 let luisResult = await this.luisclient.getIntent(utterance.text);
                
                 return this.transformer.transform(luisResult, utterance);
                 
-            }))
-           
-         return result;
+            }));
+
+            return result;
             
-        }
-        
+        }catch(err){console.error("Error" + err);}
     }
+}

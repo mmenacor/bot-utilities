@@ -16,11 +16,16 @@ class ConfidenceBuilder {
     }
     build(utterances) {
         return __awaiter(this, void 0, void 0, function* () {
-            let result = yield Promise.all(utterances.map((utterance, index, utterances) => __awaiter(this, void 0, void 0, function* () {
-                let luisResult = yield this.luisclient.getIntent(utterance.text);
-                return this.transformer.transform(luisResult, utterance);
-            })));
-            return result;
+            try {
+                let result = yield Promise.all(utterances.map((utterance, index, utterances) => __awaiter(this, void 0, void 0, function* () {
+                    let luisResult = yield this.luisclient.getIntent(utterance.text);
+                    return this.transformer.transform(luisResult, utterance);
+                })));
+                return result;
+            }
+            catch (err) {
+                console.error("Error" + err);
+            }
         });
     }
 }

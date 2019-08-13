@@ -16,13 +16,13 @@ class ConfigurationtReader {
             try {
                 let content = yield fs.readFile(path);
                 let jsonFile = JSON.parse(content);
-                arrUtterances = jsonFile.utterances.map((utterance) => {
+                arrUtterances = yield Promise.all(jsonFile.utterances.map((utterance) => {
                     let objUtterances = {
                         text: utterance.text,
                         intent: utterance.intent
                     };
                     return objUtterances;
-                });
+                }));
             }
             catch (err) {
                 console.error("Error" + err);

@@ -16,20 +16,23 @@ class App {
     createConfusionMatrix() {
         return __awaiter(this, void 0, void 0, function* () {
             var datatests = require('./datatest.js');
-            let luisConfiguration = {
-                baseUrl: "https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/",
-                modelId: "9a1c34c7-7063-430a-84f8-6cb93805e33d",
-                subscription: "5fd1d3081968422aa0abea9511a5d774"
-            };
             const pathoutput = 'C:/output';
             const pathinput = 'C:/apps';
-            let luisclient = new luisclient_1.LuisClient(luisConfiguration);
-            let confidencebuilder = new confidencebuilder_1.ConfidenceBuilder(luisclient);
-            let createconfusionmatrix = new confusionmatrixbuilder_1.CreateConfusionMatrix(confidencebuilder);
+            var luisConfiguration = {
+                baseUrl: "https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/",
+                modelId: "",
+                subscription: "4b23194f66da4f69b15507de38b6f3d5"
+            };
             let configurationreader = new endpointreader_1.ConfigurationtReader();
             let appslist = yield configurationreader.getModels(`${pathinput}/appslist.json`);
             for (let app of appslist) {
-                app.name;
+                function esperar() {
+                    console.log("Esperando...");
+                }
+                luisConfiguration.modelId = app.appID;
+                let luisclient = new luisclient_1.LuisClient(luisConfiguration);
+                let confidencebuilder = new confidencebuilder_1.ConfidenceBuilder(luisclient);
+                let createconfusionmatrix = new confusionmatrixbuilder_1.CreateConfusionMatrix(confidencebuilder);
                 let utteranceslist = yield configurationreader.getUtterances(`${pathinput}/${app.name}.json`);
                 let result = yield createconfusionmatrix.build(utteranceslist, `${pathoutput}/${app.name}.csv`);
             }

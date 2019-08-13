@@ -11,7 +11,7 @@ export class ConfigurationtReader {
             
             let content = await fs.readFile(path)
             let jsonFile= JSON.parse(content);
-            arrUtterances=jsonFile.utterances.map((utterance:any)=>{
+            arrUtterances=  await Promise.all(jsonFile.utterances.map((utterance:any)=>{
                 let objUtterances:IUtterance = {
                     text: utterance.text,
                     intent: utterance.intent
@@ -19,7 +19,7 @@ export class ConfigurationtReader {
                };
               
                 return objUtterances;
-            })
+            }))
         }catch(err){console.error("Error" + err);}
     return arrUtterances;
         

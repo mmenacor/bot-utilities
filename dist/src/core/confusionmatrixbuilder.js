@@ -28,7 +28,9 @@ class CreateConfusionMatrix {
                     { id: 'confidence', title: 'confidence' }
                 ]
             });
-            return csvWriter.writeRecords(confidences);
+            return yield csvWriter.writeRecords(confidences)
+                .then(() => console.log("Archivo creado con éxito"))
+                .catch((err) => console.log(err));
         });
     }
 }

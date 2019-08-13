@@ -30,7 +30,9 @@ public async build (utterances:IUtterance[],filename:string): Promise<any> {
         ]
     });
               
-    return csvWriter.writeRecords(confidences);
+    return await csvWriter.writeRecords(confidences)
+            .then(()=>console.log("Archivo creado con éxito"))
+            .catch((err:any)=>console.log(err));
                
     }
         
