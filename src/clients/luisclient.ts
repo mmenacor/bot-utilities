@@ -1,36 +1,32 @@
-import { ILuisresult } from "../models/luisresult";
-import { ILuisConfiguration } from "../config/luisconfiguration";
+import { ILuResult } from "../models/luresult";
+import { ILuisConfiguration } from "../config/ILuisConfiguration";
 
 
 import request from 'request-promise-native'
+import { ILuClient } from "./ILuClient";
 const https = require('https')
 
-export interface ILuisclient{
 
-   getIntent (utterance: string):Promise<ILuisresult>
 
-}
-
-export class LuisClient implements ILuisclient{
+export class LuisClient implements ILuClient{
     
     private agente: any ;
 
-    constructor (private config:ILuisConfiguration){
+    constructor (private config:ILuisConfiguration, private modelId: string){
       
             this.agente = request.defaults({
             baseUrl: this.config.baseUrl,
             strictSSL: false,
             agent: new https.Agent({ keepAlive: true })
-          
           })
         
     }
 
-    public async getIntent (utterance: string): Promise<ILuisresult>{
+    public async getIntent (utterance: string): Promise<ILuResult>{
         
         let result = await this.agente.get({
             
-            uri: `${this.config.modelId}?subscription-key=${this.config.subscription}&q=${utterance}`
+            uri: `${this.modelId}?subscription-key=${this.config.subscription}&q=${utterance}`
             
         })
 

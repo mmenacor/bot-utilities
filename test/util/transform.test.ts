@@ -1,6 +1,6 @@
 
 import { Transformer } from '../../src/util/transformer';
-import { ILuisresult } from '../../src/models/luisresult'
+import { ILuResult } from '../../src/models/luresult'
 import { IUtterance } from '../../src/models/utterance';
 
 //import * as datatests from './datatest';
@@ -11,7 +11,7 @@ test("Número de inputs es igual a Luis results", ()=>{
     
     //arrange
     let transformer : Transformer = new Transformer();
-    let luisResult : ILuisresult[] = datatests.luisresults;
+    let luisResult : ILuResult[] = datatests.luisresults;
     let validation: IUtterance[] = datatests.utteranceValidation;
     
     //Act

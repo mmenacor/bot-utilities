@@ -1,58 +1,27 @@
-import {LuisClient, ILuisclient} from './clients/luisclient';
-import { ILuisConfiguration } from "./config/luisconfiguration";
-import { ILuisresult } from './models/luisresult';
-import {ConfidenceBuilder} from '../src/core/confidencebuilder';
-import {CreateConfusionMatrix} from '../src/core/confusionmatrixbuilder';
-import { IUtterance } from '../src/models/utterance';
-import {ConfigurationtReader} from '../src/util/endpointreader';
+import { App } from './app'
+import { ConfigurationtReader } from './util/configreader';
+import { IAppConfiguration } from './config/IAppConfiguration';
 
-import {IEndpoints} from '../src/models/endpoints';
-export class App {
-    
-    public async createConfusionMatrix() {
-    
-    var datatests = require('./datatest.js');
-    const pathoutput = 'C:/output';   
-    const pathinput= 'C:/apps';
-    
-    var luisConfiguration: ILuisConfiguration = {
-        baseUrl: "https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/",
-        modelId: /*"9a1c34c7-7063-430a-84f8-6cb93805e33d",,*/"",
-        subscription: "4b23194f66da4f69b15507de38b6f3d5"
-        };
-    let configurationreader = new ConfigurationtReader();
-    
-    let appslist:IEndpoints[] = await configurationreader.getModels(`${pathinput}/appslist.json`);
-    
-    for(let app of appslist){
-        function esperar(){
-            console.log("Esperando...");
-        }
-        
-        luisConfiguration.modelId=app.appID;
-        let luisclient  =  new LuisClient(luisConfiguration);
-        let confidencebuilder: ConfidenceBuilder =  new ConfidenceBuilder(luisclient); 
-        let createconfusionmatrix =  new CreateConfusionMatrix(confidencebuilder);
-        let utteranceslist=  await configurationreader.getUtterances(`${pathinput}/${app.name}.json`);
-        
-            
-        let result =  await createconfusionmatrix.build(utteranceslist, `${pathoutput}/${app.name}.csv`);            
-        
-    };
+   
+var luisConfiguration: ILuisConfiguration = {
+  baseUrl: "https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/",
+  subscription: "4b23194f66da4f69b15507de38b6f3d5",
+  alias: 'base'
+  };
 
-              
-    
-    // let validation: IUtterance[] = await utteranceslist;
-    // let validation = datatests.utteranceValidation;
-  
-        
-    }
-    
-        
+  // TODO: esto debería ser un singleton
+let configurationreader: ConfigurationtReader;
+let appConfiguration: IAppConfiguration;
+let app: App;
+let pathConfiguration: string;
+
+
+async function init(pathConfiguration: string){
+  configurationreader = new ConfigurationtReader();
+  appConfiguration = await configurationreader.getConfiguration(pathConfiguration);
+  app = new App(appConfiguration);
 }
-    let createConfusionMatrix = new App;
-    createConfusionMatrix.createConfusionMatrix();
-        
-    
-    
 
+async function createConfusionMatrix() {
+  await app.createConfusionMatrix();
+}

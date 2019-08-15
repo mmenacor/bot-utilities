@@ -1,5 +1,6 @@
-import {IEndpoints} from '../models/endpoints';
+import {ILuModel} from '../models/lumodel';
 import {IUtterance} from '../models/utterance';
+import { IAppConfiguration } from '../config/IAppConfiguration';
 
 const fs = require("fs").promises;
 
@@ -26,30 +27,19 @@ export class ConfigurationtReader {
     }
     
 
-    public async getModels(path:string):Promise<IEndpoints[]>{
+    public async getConfiguration(path:string):Promise<IAppConfiguration>{
         
-        let arrApps: IEndpoints[];
+        let config: IAppConfiguration;
         try {
             
             let content = await fs.readFile(path)
-            let jsonFile= JSON.parse(content);
-            arrApps=jsonFile.endpoints.map((endpoint:any)=>{
-                let objApps:IEndpoints = {
-                    name: endpoint.name,
-                    appID: endpoint.appID
-            
-               };
-                return objApps;
-            })
-        }catch(err){console.error("Error" + err);}
-    return arrApps;
+            config = JSON.parse(content);
+           
+        }catch(err){
+            console.error("Error" + err);
+        }
+    return config;
     }  
 }
-   
-// let leerendpoints =new ConfigurationtReader();
-// let arregloapps = leerendpoints.getModels("C:/apps/appslist.json");
 
-// let arregloutterances= arregloapps.map((appID)=>{
-                
-// });
 

@@ -1,10 +1,10 @@
-import { ILuisresult } from "../models/luisresult";
+import { ILuResult } from "../models/luResult";
 import { IConfidence } from "../models/confidence" ;
 import { IUtterance } from "../models/utterance";
 
 export class Transformer {
     
-    public transform (luisResult:ILuisresult, validation:IUtterance ) : IConfidence {
+    public transform (luisResult:ILuResult, validation:IUtterance ) : IConfidence {
                         
         let output: IConfidence = { 
             texto: luisResult.query,
